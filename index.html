@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>LOGO EGO</title>
+    <link rel="stylesheet" href="static/style.css">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6195911d26c4a57d"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145482737-6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-145482737-6');
+    </script>
+</head>
+
+<body>
+    <nav class="p-3 container navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="https://logoego.netlify.app/">LOGO EGO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" target="_blank" href="http://bssm.hs.kr/">부산소프트웨어마이스터고
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link"
+                        href="https://wonderful-mayonnaise-a24.notion.site/CAR-SW-fc190aaf36924a03832593d44fecdbc9"
+                        target="_blank">CAR
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" target="_blank">PlayStore
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <input type="button" value="마이스터고 정보" class="allmi" onclick="go_popup()">
+        <div id="popup" class="Pstyle">
+         <span class="b-close">X</span>
+         <div class="content" style="height: auto; width: auto;">
+         마이스터고
+         </div>
+        </div>
+    </nav>
+    <section class="d-flex justify-content-center">
+        <p class="d-flex align-items-center pr-3">마이스터고</p>
+        <div>
+            <input type="checkbox" id="gender">
+            <label for="gender">
+                <span class="knob">
+                </span>
+            </label>
+        </div>
+        <p class="d-flex align-items-center pl-3">인문계</p>
+    </section>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <div class="mt-3 container file-upload">
+        <div class="image-upload-wrap">
+            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+            <div class="drag-text">
+                <img src="img/upload.svg" class="mt-5 pt-5 upload">
+                <h3 class="mb-5 pb-5 pt-4  upload-text">로고 사진을 올려놓거나 눌러서 업로드하세요!</h3>
+            </div>
+        </div>
+        <div class="file-upload-content">
+            <img class="file-upload-image" id="face-image" src="#" alt="your image" />
+            <div id="loading" class="animated bounce">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p class="text-center">AI가 로고를 분석중입니다.</p>
+            </div>
+            <p class="result-message"></p>
+            <div id="label-container" class="d-flex flex-column justify-content-around"></div>
+            <div class="addthis_inline_share_toolbox_pvio"></div>
+            <div class="pt-3 image-title-wrap">
+                <button type="button p-2" class="try-again-btn" onclick="gaReload1();" data-toggle="modal"
+                    data-target="#adModal">
+                    <span class="try-again-text">다른 이미지로 재시도</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="adModal" tabindex="-1" role="dialog" aria-labelledby="adModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adModalLabel">재시도 버튼을 눌러주세요.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <img src="img/reloading.svg" class="reloadimg">
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button p-2" class="try-again-btn" onclick="gaReload2();">
+                        <span class="try-again-text">다른 이미지로 재시도</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var d = document,
+                s = d.createElement('script');
+            s.src = 'https://jocoding.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.image-upload-wrap').hide();
+                    $('#loading').show();
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+                    $('.image-title').html(input.files[0].name);
+                };
+                reader.readAsDataURL(input.files[0]);
+                init().then(function () {
+                    console.log("hello");
+                    predict();
+                    $('#loading').hide();
+                });
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function () {
+            $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function () {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
+    </script>
+    <script type="text/javascript">
+        let URL;
+        const urlMale = "https://teachablemachine.withgoogle.com/models/XvhJbVN-s/";
+        const urlFemale = "https://teachablemachine.withgoogle.com/models/XvhJbVN-s/";
+        let model, webcam, labelContainer, maxPredictions;
+        async function init() {
+            if (document.getElementById("gender").checked) {
+                URL = urlMale;
+            } else {
+                URL = urlFemale;
+            }
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) {
+                var element = document.createElement("div")
+                element.classList.add("d-flex");
+                labelContainer.appendChild(element);
+            }
+        }
+        async function predict() {
+            var image = document.getElementById("face-image")
+            const prediction = await model.predict(image, false);
+            prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
+            console.log(prediction[0].className);
+            var resultTitle, resultExplain, resultCeleb;
+            if (document.getElementById("gender").checked) {
+                gtag('event', '동물상 테스트 수행', {
+                    'event_category': '동물상 테스트 수행',
+                    'event_label': '남자'
+                });
+                switch (prediction[0].className) {
+                    case "삼척마이스터고등학교":
+                        resultTitle = "삼척마이스터고등학교"
+                        resultExplain = "주소: 강원도 삼척시 근덕면 삼척로 3700 , 삼척마이스터고등학교"
+                        resultCeleb = "http://set.gwe.hs.kr/main.do"
+                        gtag('event', '남자 결과 강아지상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국소방마이스터고등학교":
+                        resultTitle = "한국소방마이스터고등학교"
+                        resultExplain = "주소: 강원도 영월군 영월읍 영모전길 108 (영월읍)"
+                        resultCeleb = "https://fire-meister.gwe.hs.kr/main.do"
+                        gtag('event', '남자 결과 고양이상', { 'event_category': '남자 결과' });
+                        break;
+                    case "원주의료고":
+                        resultTitle = "원주의료고"
+                        resultExplain = "주소: 강원도 원주시 문막읍 원문로 1756 (문막읍, 원주의료고등학교)"
+                        resultCeleb = "http://wonjumedi.gwe.hs.kr"
+                        gtag('event', '남자 결과 토끼상', { 'event_category': '남자 결과' });
+                        break;
+                    case "경기게임마이스터고":
+                        resultTitle = "경기게임마이스터고"
+                        resultExplain = "주소: 경기도 안양시 동안구 학의로 70 , 경기게임마이스터고등학교 (비산동)"
+                        resultCeleb = "http://www.ggm.hs.kr"
+                        gtag('event', '남자 결과 공룡상', { 'event_category': '남자 결과' });
+                        break;
+                    case "거제공업고":
+                        resultTitle = "거제공업고"
+                        resultExplain = "주소: 경상남도 거제시 계룡로11길 63 , (고현동,거제공업고등학교) (고현동)"
+                        resultCeleb = "http://geoje-th-h.gne.go.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "공군항공과학고":
+                        resultTitle = "공군항공과학고"
+                        resultExplain = "주소: 경상남도 진주시 금산면 송백로 38 (금산면)"
+                        resultCeleb = "https://www.airforce.mil.kr/user/indexMain.action?siteId=kokyo"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "삼천포공업고":
+                        resultTitle = "삼천포공업고"
+                        resultExplain = "주소: 경상남도 사천시 신항로 63 (동금동, 삼천포공업고등학교)"
+                        resultCeleb = "http://samgong-h.gne.go.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국나노마이스터고":
+                        resultTitle = "한국나노마이스터고"
+                        resultExplain = "주소: 경상남도 밀양시 무안면 신법길 29 (무안면, 밀양전자고등학교)"
+                        resultCeleb = " http://nano-h.gne.go.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국국제통상마이스터고":
+                        resultTitle = "한국국제통상마이스터고"
+                        resultExplain = "주소: 경상북도 경주시 감포읍 감포로12길 20 (감포읍,감포중학교/감포종합중고등학교)"
+                        resultCeleb = "http://school.gyo6.net/gampohs"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "평택기계공업고":
+                        resultTitle = "평택기계공업고"
+                        resultExplain = "주소: 경기도 평택시 중앙1로 61 , (비전동, 평택기계공업고교)"
+                        resultCeleb = "http://www.ptmt.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "경북식품과학마이스터고":
+                        resultTitle = "경북식품과학마이스터고"
+                        resultExplain = "주소: 경상북도 영천시 신녕면 찰방길 8 (신녕면)"
+                        resultCeleb = "http://school.gyo6.net/gfsm"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "부산기계공업고":
+                        resultTitle = "부산기계공업고"
+                        resultExplain = "주소: 부산광역시 해운대구광역시 해운대로 569 (우동)"
+                        resultCeleb = "http://school.busanedu.net/bmt-h/main.do"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "부산소프트웨어마이스터고":
+                        resultTitle = "부산소프트웨어마이스터고"
+                        resultExplain = "주소: 부산광역시 강서구 가락대로 1393 (봉림동 15)"
+                        resultCeleb = " http://www.bssm.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "부산자동차고":
+                        resultTitle = "부산자동차고"
+                        resultExplain = "주소: 부산광역시 사하구 하신중앙로3번나길 16 , 부산자동차고등학교 (장림동, 부산자동차고등학교)"
+                        resultCeleb = "http://www.automotive.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "부산해사고":
+                        resultTitle = "부산해사고"
+                        resultExplain = "주소: 부산광역시 영도구 해양로 425 (동삼동)"
+                        resultCeleb = "http://www.maritime.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "구미전자공업고":
+                        resultTitle = "구미전자공업고"
+                        resultExplain = "주소: 경상북도 구미시 임수로 48 (임수동)"
+                        resultCeleb = "http://gnet.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "금오공업고":
+                        resultTitle = "금오공업고"
+                        resultExplain = "주소: 경상북도 구미시 구미대로30길 59 , 금오공업고등학교 (공단동, 금오공고)"
+                        resultCeleb = "http://www.koths.or.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "포항제철공업고":
+                        resultTitle = "포항제철공업고"
+                        resultExplain = "주소: 경상북도 포항시 남구 지곡로 150 , 포항제철공업고등학교 (지곡동)"
+                        resultCeleb = "http://school.gyo6.net/pocheoltechhs"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국원자력마이스터고":
+                        resultTitle = "한국원자력마이스터고"
+                        resultExplain = "주소: 경상북도 울진군 평해읍 월송정로 422 , 한국원자력마이스터고등학교 (평해읍)"
+                        resultCeleb = "http://pyth.school.gyo6.net"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "광주소프트웨어마이스터고":
+                        resultTitle = "광주소프트웨어마이스터고"
+                        resultExplain = "주소: 광주광역시 광산구 상무대로 312 (송정동)"
+                        resultCeleb = "http://gsm.gen.hs.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "광주자동화설비공업고":
+                        resultTitle = "광주자동화설비공업고"
+                        resultExplain = "주소: 광주광역시 광산구 사암로92번길 , 136-26 (우산동)"
+                        resultCeleb = "http://gat.gen.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "경북기계공업고":
+                        resultTitle = "경북기계공업고"
+                        resultExplain = "주소: 대구광역시 달서구 월배로 275 (상인동)"
+                        resultCeleb = "http://www.gbgigong.hs.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "대구농업마이스터고":
+                        resultTitle = "대구농업마이스터고"
+                        resultExplain = "주소: 대구광역시 수성구 달구벌대로 3170 , 대구농업마이스터고등학교 (노변동)"
+                        resultCeleb = "http://www.dma.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "대구소프트웨어마이스터고":
+                        resultTitle = "대구소프트웨어마이스터고"
+                        resultExplain = "주소: 대구광역시 달성군 구지면 창리로11길 93 (구지면)"
+                        resultCeleb = "http://www.dgsw.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "대구일마이스터고":
+                        resultTitle = "대구일마이스터고"
+                        resultExplain = "주소: 대구광역시 동구 효동로 48 (대구일마이스터고, 효목동)"
+                        resultCeleb = "http://www.dgmeister.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "대덕소프트웨어마이스터고":
+                        resultTitle = "대덕소프트웨어마이스터고"
+                        resultExplain = "주소: 대전광역시 유성구 가정북로 76 (장동, 대덕소프트웨어마이스터고등학교)"
+                        resultCeleb = "http://dsmhs.djsch.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "동아마이스터고":
+                        resultTitle = "동아마이스터고"
+                        resultExplain = "주소: 대전광역시 동구 충정로 97 , 동아마이스터고등학교 (자양동)"
+                        resultCeleb = "http://dongahs.djsch.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "미림여자정보과학고":
+                        resultTitle = "미림여자정보과학고"
+                        resultExplain = "주소: 서울특별시 관악구 호암로 546 (신림동)"
+                        resultCeleb = "http://www.e-mirim.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "서울도시과학기술고":
+                        resultTitle = "서울도시과학기술고"
+                        resultExplain = "주소: 서울특별시 성북구 종암로 196 (하월곡동,서울도시과학기술고등학교)"
+                        resultCeleb = "http://sust.sen.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "서울로봇고":
+                        resultTitle = "서울로봇고"
+                        resultExplain = "주소: 서울특별시 강남구 광평로20길 63 , 서울로봇고등학교 (일원동)"
+                        resultCeleb = "http://www.seoulrobot.hs.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "수도전기공업고":
+                        resultTitle = "수도전기공업고"
+                        resultExplain = "주소: 서울특별시 강남구 개포로 410 , 수도전기공업고등학교 (개포동)"
+                        resultCeleb = "http://sudo.sen.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "울산마이스터고":
+                        resultTitle = "울산마이스터고"
+                        resultExplain = "주소: 울산광역시 북구 율동6길 7 (효문동,울산마이스터고등학교)"
+                        resultCeleb = "http://www.ulsanmeister.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "울산에너지고":
+                        resultTitle = "울산에너지고"
+                        resultExplain = "주소: 울산광역시 북구 화동2길 28 , 울산에너지고등학교 (화봉동, 울산에너지고등학교)"
+                        resultCeleb = "http://www.usenergy.hs.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "현대공업고":
+                        resultTitle = "현대공업고"
+                        resultExplain = "주소: 울산광역시 동구 미포로 122 현대공업고등학교"
+                        resultCeleb = "http://hit.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "인천전자마이스터고":
+                        resultTitle = "인천전자마이스터고"
+                        resultExplain = "주소: 인천광역시 미추홀구 석정로 165 (도화동)"
+                        resultCeleb = "http://intec.icehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "인천해사고":
+                        resultTitle = "인천해사고"
+                        resultExplain = "주소: 인천광역시 중구 월미로 338 (북성동1가)"
+                        resultCeleb = "http://inm.icehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "여수석유화학고":
+                        resultTitle = "여수석유화학고"
+                        resultExplain = "주소: 전라남도 여수시 대통1길 45 , (화장동, 여수석유화학고등학교) (화장동)"
+                        resultCeleb = "http://yspetchem.hs.jne.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "완도수산고":
+                        resultTitle = "완도수산고"
+                        resultExplain = "주소: 전라남도 완도군 완도읍 장보고대로 141 , 완도수산고등학교 (완도읍)"
+                        resultCeleb = "http://wandosugo.hs.jne.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "전남생명과학고":
+                        resultTitle = "전남생명과학고"
+                        resultExplain = "주소: 전라남도 강진군 강진읍 교촌길 23 (강진읍,전남생명과학고등학교)"
+                        resultCeleb = "http://jn-life.hs.jne.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국항만물류고":
+                        resultTitle = "한국항만물류고"
+                        resultExplain = "주소: 전라남도 광양시 진상면 신시길 177 , 한국항만물류고등학교 (진상면)"
+                        resultCeleb = "http://kpl.hs.jne.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "군산기계공업고":
+                        resultTitle = "군산기계공업고"
+                        resultExplain = "주소: 전라북도 군산시 군중길 28 , 군산기계공업고등학교 (송풍동)"
+                        resultCeleb = "http://www.gunsan-mh.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "김제농업생명마이스터고":
+                        resultTitle = "김제농업생명마이스터고"
+                        resultExplain = "주소: 전라북도 김제시 남북9길 23 , 김제농생명마이스터고등학교 (신풍동)"
+                        resultCeleb = "https://school.jbedu.kr/gmhsas"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "전북기계공업고":
+                        resultTitle = "전북기계공업고"
+                        resultExplain = "주소: 전라북도 익산시 인북로32길 41 (남중동)"
+                        resultCeleb = "http://cmt.or.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국경마축산고":
+                        resultTitle = "한국경마축산고"
+                        resultExplain = "주소: 전라북도 남원시 운봉읍 황산로 952 , 한국경마축산고등학교 (운봉읍,한국경마축산고등학교)"
+                        resultCeleb = "http://www.horseman.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "공주마이스터고":
+                        resultTitle = "공주마이스터고"
+                        resultExplain = "주소: 충청남도 공주시 유구읍 중앙1길 27-12 , 공주마이스터고등학교 (유구읍)"
+                        resultCeleb = "http://gong.cnehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "연무대기계공고":
+                        resultTitle = "연무대기계공고"
+                        resultExplain = "주소: 충청남도 논산시 연무읍 연무로 268-9 (연무읍,연무대기계공고)"
+                        resultCeleb = "http://yeonmutech.cnehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국식품마이스터고":
+                        resultTitle = "한국식품마이스터고"
+                        resultExplain = "주소: 충청남도 부여군 홍산면 홍산로 112-23 (홍산면)"
+                        resultCeleb = "http://www.kfm.cnehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "합덕제철고":
+                        resultTitle = "합덕제철고"
+                        resultExplain = "주소: 충청남도 당진시 합덕읍 면천로 1601 (합덕읍)"
+                        resultCeleb = "http://steel.cnehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "충북반도체고":
+                        resultTitle = "충북반도체고"
+                        resultExplain = "주소: 충청북도 음성군 금왕읍 무극로 393-1 (금왕읍)"
+                        resultCeleb = "http://school.cbe.go.kr/cbsemi-h/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "충북에너지고":
+                        resultTitle = "충북에너지고"
+                        resultExplain = "주소: 충청북도 청주시 상당구 미원면 미원초정로 27 (미원면)"
+                        resultCeleb = "http://www.cbenergy.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국바이오마이스터고":
+                        resultTitle = "한국바이오마이스터고"
+                        resultExplain = "주소: 충청북도 진천군 진천읍 남산4길 13 한국바이오마이스터고등학교"
+                        resultCeleb = "http://school.cbe.go.kr/kbm-h"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    default:
+                        resultTitle = "알수없음"
+                        resultExplain = ""
+                        resultCeleb = ""
+                        gtag('event', '남자 결과 알수없음', { 'event_category': '남자 결과' });
+                }
+            } else {
+                gtag('event', '동물상 테스트 수행', {
+                    'event_category': '동물상 테스트 수행',
+                    'event_label': '여자'
+                });
+                switch (prediction[0].className) {
+                    case "삼척마이스터고등학교":
+                        resultTitle = "삼척마이스터고등학교"
+                        resultExplain = "주소: 강원도 삼척시 근덕면 삼척로 3700 , 삼척마이스터고등학교"
+                        resultCeleb = "http://set.gwe.hs.kr/main.do"
+                        gtag('event', '남자 결과 강아지상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국소방마이스터고등학교":
+                        resultTitle = "한국소방마이스터고등학교"
+                        resultExplain = "주소: 강원도 영월군 영월읍 영모전길 108 (영월읍)"
+                        resultCeleb = "https://fire-meister.gwe.hs.kr/main.do"
+                        gtag('event', '남자 결과 고양이상', { 'event_category': '남자 결과' });
+                        break;
+                    case "원주의료고":
+                        resultTitle = "원주의료고"
+                        resultExplain = "주소: 강원도 원주시 문막읍 원문로 1756 (문막읍, 원주의료고등학교)"
+                        resultCeleb = "http://wonjumedi.gwe.hs.kr"
+                        gtag('event', '남자 결과 토끼상', { 'event_category': '남자 결과' });
+                        break;
+                    case "경기게임마이스터고":
+                        resultTitle = "경기게임마이스터고"
+                        resultExplain = "주소: 경기도 안양시 동안구 학의로 70 , 경기게임마이스터고등학교 (비산동)"
+                        resultCeleb = "http://www.ggm.hs.kr"
+                        gtag('event', '남자 결과 공룡상', { 'event_category': '남자 결과' });
+                        break;
+                    case "거제공업고":
+                        resultTitle = "거제공업고"
+                        resultExplain = "주소: 경상남도 거제시 계룡로11길 63 , (고현동,거제공업고등학교) (고현동)"
+                        resultCeleb = "http://geoje-th-h.gne.go.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "공군항공과학고":
+                        resultTitle = "공군항공과학고"
+                        resultExplain = "주소: 경상남도 진주시 금산면 송백로 38 (금산면)"
+                        resultCeleb = "https://www.airforce.mil.kr/user/indexMain.action?siteId=kokyo"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "삼천포공업고":
+                        resultTitle = "삼천포공업고"
+                        resultExplain = "주소: 경상남도 사천시 신항로 63 (동금동, 삼천포공업고등학교)"
+                        resultCeleb = "http://samgong-h.gne.go.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국나노마이스터고":
+                        resultTitle = "한국나노마이스터고"
+                        resultExplain = "주소: 경상남도 밀양시 무안면 신법길 29 (무안면, 밀양전자고등학교)"
+                        resultCeleb = " http://nano-h.gne.go.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국국제통상마이스터고":
+                        resultTitle = "한국국제통상마이스터고"
+                        resultExplain = "주소: 경상북도 경주시 감포읍 감포로12길 20 (감포읍,감포중학교/감포종합중고등학교)"
+                        resultCeleb = "http://school.gyo6.net/gampohs"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "평택기계공업고":
+                        resultTitle = "평택기계공업고"
+                        resultExplain = "주소: 경기도 평택시 중앙1로 61 , (비전동, 평택기계공업고교)"
+                        resultCeleb = "http://www.ptmt.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "경북식품과학마이스터고":
+                        resultTitle = "경북식품과학마이스터고"
+                        resultExplain = "주소: 경상북도 영천시 신녕면 찰방길 8 (신녕면)"
+                        resultCeleb = "http://school.gyo6.net/gfsm"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "부산기계공업고":
+                        resultTitle = "부산기계공업고"
+                        resultExplain = "주소: 부산광역시 해운대구광역시 해운대로 569 (우동)"
+                        resultCeleb = "http://school.busanedu.net/bmt-h/main.do"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "부산소프트웨어마이스터고":
+                        resultTitle = "부산소프트웨어마이스터고"
+                        resultExplain = "주소: 부산광역시 강서구 가락대로 1393 (봉림동 15)"
+                        resultCeleb = " http://www.bssm.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "부산자동차고":
+                        resultTitle = "부산자동차고"
+                        resultExplain = "주소: 부산광역시 사하구 하신중앙로3번나길 16 , 부산자동차고등학교 (장림동, 부산자동차고등학교)"
+                        resultCeleb = "http://www.automotive.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "부산해사고":
+                        resultTitle = "부산해사고"
+                        resultExplain = "주소: 부산광역시 영도구 해양로 425 (동삼동)"
+                        resultCeleb = "http://www.maritime.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "구미전자공업고":
+                        resultTitle = "구미전자공업고"
+                        resultExplain = "주소: 경상북도 구미시 임수로 48 (임수동)"
+                        resultCeleb = "http://gnet.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "금오공업고":
+                        resultTitle = "금오공업고"
+                        resultExplain = "주소: 경상북도 구미시 구미대로30길 59 , 금오공업고등학교 (공단동, 금오공고)"
+                        resultCeleb = "http://www.koths.or.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "포항제철공업고":
+                        resultTitle = "포항제철공업고"
+                        resultExplain = "주소: 경상북도 포항시 남구 지곡로 150 , 포항제철공업고등학교 (지곡동)"
+                        resultCeleb = "http://school.gyo6.net/pocheoltechhs"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국원자력마이스터고":
+                        resultTitle = "한국원자력마이스터고"
+                        resultExplain = "주소: 경상북도 울진군 평해읍 월송정로 422 , 한국원자력마이스터고등학교 (평해읍)"
+                        resultCeleb = "http://pyth.school.gyo6.net"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "광주소프트웨어마이스터고":
+                        resultTitle = "광주소프트웨어마이스터고"
+                        resultExplain = "주소: 광주광역시 광산구 상무대로 312 (송정동)"
+                        resultCeleb = "http://gsm.gen.hs.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "광주자동화설비공업고":
+                        resultTitle = "광주자동화설비공업고"
+                        resultExplain = "주소: 광주광역시 광산구 사암로92번길 , 136-26 (우산동)"
+                        resultCeleb = "http://gat.gen.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "경북기계공업고":
+                        resultTitle = "경북기계공업고"
+                        resultExplain = "주소: 대구광역시 달서구 월배로 275 (상인동)"
+                        resultCeleb = "http://www.gbgigong.hs.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "대구농업마이스터고":
+                        resultTitle = "대구농업마이스터고"
+                        resultExplain = "주소: 대구광역시 수성구 달구벌대로 3170 , 대구농업마이스터고등학교 (노변동)"
+                        resultCeleb = "http://www.dma.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "대구소프트웨어마이스터고":
+                        resultTitle = "대구소프트웨어마이스터고"
+                        resultExplain = "주소: 대구광역시 달성군 구지면 창리로11길 93 (구지면)"
+                        resultCeleb = "http://www.dgsw.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "대구일마이스터고":
+                        resultTitle = "대구일마이스터고"
+                        resultExplain = "주소: 대구광역시 동구 효동로 48 (대구일마이스터고, 효목동)"
+                        resultCeleb = "http://www.dgmeister.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "대덕소프트웨어마이스터고":
+                        resultTitle = "대덕소프트웨어마이스터고"
+                        resultExplain = "주소: 대전광역시 유성구 가정북로 76 (장동, 대덕소프트웨어마이스터고등학교)"
+                        resultCeleb = "http://dsmhs.djsch.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "동아마이스터고":
+                        resultTitle = "동아마이스터고"
+                        resultExplain = "주소: 대전광역시 동구 충정로 97 , 동아마이스터고등학교 (자양동)"
+                        resultCeleb = "http://dongahs.djsch.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "미림여자정보과학고":
+                        resultTitle = "미림여자정보과학고"
+                        resultExplain = "주소: 서울특별시 관악구 호암로 546 (신림동)"
+                        resultCeleb = "http://www.e-mirim.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "서울도시과학기술고":
+                        resultTitle = "서울도시과학기술고"
+                        resultExplain = "주소: 서울특별시 성북구 종암로 196 (하월곡동,서울도시과학기술고등학교)"
+                        resultCeleb = "http://sust.sen.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "서울로봇고":
+                        resultTitle = "서울로봇고"
+                        resultExplain = "주소: 서울특별시 강남구 광평로20길 63 , 서울로봇고등학교 (일원동)"
+                        resultCeleb = "http://www.seoulrobot.hs.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "수도전기공업고":
+                        resultTitle = "수도전기공업고"
+                        resultExplain = "주소: 서울특별시 강남구 개포로 410 , 수도전기공업고등학교 (개포동)"
+                        resultCeleb = "http://sudo.sen.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "울산마이스터고":
+                        resultTitle = "울산마이스터고"
+                        resultExplain = "주소: 울산광역시 북구 율동6길 7 (효문동,울산마이스터고등학교)"
+                        resultCeleb = "http://www.ulsanmeister.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "울산에너지고":
+                        resultTitle = "울산에너지고"
+                        resultExplain = "주소: 울산광역시 북구 화동2길 28 , 울산에너지고등학교 (화봉동, 울산에너지고등학교)"
+                        resultCeleb = "http://www.usenergy.hs.kr/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "현대공업고":
+                        resultTitle = "현대공업고"
+                        resultExplain = "주소: 울산광역시 동구 미포로 122 현대공업고등학교"
+                        resultCeleb = "http://hit.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "인천전자마이스터고":
+                        resultTitle = "인천전자마이스터고"
+                        resultExplain = "주소: 인천광역시 미추홀구 석정로 165 (도화동)"
+                        resultCeleb = "http://intec.icehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "인천해사고":
+                        resultTitle = "인천해사고"
+                        resultExplain = "주소: 인천광역시 중구 월미로 338 (북성동1가)"
+                        resultCeleb = "http://inm.icehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "여수석유화학고":
+                        resultTitle = "여수석유화학고"
+                        resultExplain = "주소: 전라남도 여수시 대통1길 45 , (화장동, 여수석유화학고등학교) (화장동)"
+                        resultCeleb = "http://yspetchem.hs.jne.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "완도수산고":
+                        resultTitle = "완도수산고"
+                        resultExplain = "주소: 전라남도 완도군 완도읍 장보고대로 141 , 완도수산고등학교 (완도읍)"
+                        resultCeleb = "http://wandosugo.hs.jne.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "전남생명과학고":
+                        resultTitle = "전남생명과학고"
+                        resultExplain = "주소: 전라남도 강진군 강진읍 교촌길 23 (강진읍,전남생명과학고등학교)"
+                        resultCeleb = "http://jn-life.hs.jne.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국항만물류고":
+                        resultTitle = "한국항만물류고"
+                        resultExplain = "주소: 전라남도 광양시 진상면 신시길 177 , 한국항만물류고등학교 (진상면)"
+                        resultCeleb = "http://kpl.hs.jne.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "군산기계공업고":
+                        resultTitle = "군산기계공업고"
+                        resultExplain = "주소: 전라북도 군산시 군중길 28 , 군산기계공업고등학교 (송풍동)"
+                        resultCeleb = "http://www.gunsan-mh.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "김제농업생명마이스터고":
+                        resultTitle = "김제농업생명마이스터고"
+                        resultExplain = "주소: 전라북도 김제시 남북9길 23 , 김제농생명마이스터고등학교 (신풍동)"
+                        resultCeleb = "https://school.jbedu.kr/gmhsas"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "전북기계공업고":
+                        resultTitle = "전북기계공업고"
+                        resultExplain = "주소: 전라북도 익산시 인북로32길 41 (남중동)"
+                        resultCeleb = "http://cmt.or.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국경마축산고":
+                        resultTitle = "한국경마축산고"
+                        resultExplain = "주소: 전라북도 남원시 운봉읍 황산로 952 , 한국경마축산고등학교 (운봉읍,한국경마축산고등학교)"
+                        resultCeleb = "http://www.horseman.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "공주마이스터고":
+                        resultTitle = "공주마이스터고"
+                        resultExplain = "주소: 충청남도 공주시 유구읍 중앙1길 27-12 , 공주마이스터고등학교 (유구읍)"
+                        resultCeleb = "http://gong.cnehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "연무대기계공고":
+                        resultTitle = "연무대기계공고"
+                        resultExplain = "주소: 충청남도 논산시 연무읍 연무로 268-9 (연무읍,연무대기계공고)"
+                        resultCeleb = "http://yeonmutech.cnehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국식품마이스터고":
+                        resultTitle = "한국식품마이스터고"
+                        resultExplain = "주소: 충청남도 부여군 홍산면 홍산로 112-23 (홍산면)"
+                        resultCeleb = "http://www.kfm.cnehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "합덕제철고":
+                        resultTitle = "합덕제철고"
+                        resultExplain = "주소: 충청남도 당진시 합덕읍 면천로 1601 (합덕읍)"
+                        resultCeleb = "http://steel.cnehs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "충북반도체고":
+                        resultTitle = "충북반도체고"
+                        resultExplain = "주소: 충청북도 음성군 금왕읍 무극로 393-1 (금왕읍)"
+                        resultCeleb = "http://school.cbe.go.kr/cbsemi-h/"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "충북에너지고":
+                        resultTitle = "충북에너지고"
+                        resultExplain = "주소: 충청북도 청주시 상당구 미원면 미원초정로 27 (미원면)"
+                        resultCeleb = "http://www.cbenergy.hs.kr"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+                    case "한국바이오마이스터고":
+                        resultTitle = "한국바이오마이스터고"
+                        resultExplain = "주소: 충청북도 진천군 진천읍 남산4길 13 한국바이오마이스터고등학교"
+                        resultCeleb = "http://school.cbe.go.kr/kbm-h"
+                        gtag('event', '남자 결과 곰상', { 'event_category': '남자 결과' });
+                        break;
+
+                    default:
+                        resultTitle = "알수없음"
+                        resultExplain = ""
+                        resultCeleb = ""
+                        gtag('event', '여자 결과 알수없음', { 'event_category': '여자 결과' });
+                }
+            }
+            var title = "<div class='" + prediction[0].className + "-animal-title'>" + resultTitle + "</div>"
+            var explain = "<div class='animal-explain pt-2'>" + resultExplain + "</div>"
+            var celeb = "<a href=" + resultCeleb + " target=_blank  class='" + prediction[0].className + "-animal-celeb pt-2 pb-2'>" + resultCeleb + "</a>"
+            $('.result-message').html(title + explain + celeb);
+
+        }
+    </script>
+    <footer>
+        <nav>
+            <a href='https://github.com/CN-12/Logo-Ego' target='_blank'>Github</a>
+        </nav>
+        <p>
+            <span>LOGO EGO</span><br />
+            <span>개발 김성수 박세훈 이경신 이동호 이주형 정승민</span><br />
+            <span>도움을 주신 분 이세진 jocoding</span>
+        </p>
+    </footer>
+    <script src="http://code.jquery.com/jquery-1.7.js" type="text/javascript"></script>
+    <script src="static/jquery.bpopup.min.js"></script>
+    <script type="text/javascript">
+        function go_popup() {
+            $('#popup').bPopup();
+        };
+    </script>
+</body>
+<!-- 
+image input box
+Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+gender toggle
+Copyright (c) 2020 by Mert Cukuren (https://codepen.io/knyttneve/pen/bPpEZY)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ -->
+
+</html>
